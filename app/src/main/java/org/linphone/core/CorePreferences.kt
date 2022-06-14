@@ -314,6 +314,10 @@ class CorePreferences constructor(private val context: Context) {
         get() = config.getString("app", "device_name", Compatibility.getDeviceName(context))!!
         set(value) = config.setString("app", "device_name", value)
 
+    /**
+     * 在启动器中创建至聊天室的快捷方式 默认true
+     * 设置-聊天-在启动器中创建至聊天室的快捷方式(visibility = gone)
+     */
     var chatRoomShortcuts: Boolean
         get() = config.getBool("app", "chat_room_shortcuts", true)
         set(value) {
@@ -322,6 +326,9 @@ class CorePreferences constructor(private val context: Context) {
 
     /* Voice Recordings */
 
+    /**
+     * 发送语音的时候最大录制时长是10分钟
+     */
     var voiceRecordingMaxDuration: Int
         get() = config.getInt("app", "voice_recording_max_duration", 600000) // in ms
         set(value) = config.setInt("app", "voice_recording_max_duration", value)
