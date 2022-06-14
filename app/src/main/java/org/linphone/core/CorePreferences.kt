@@ -510,6 +510,10 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("app", "route_audio_to_bluetooth_if_available", value)
         }
 
+    /**
+     * 开启视频模式的时候音频使用的是扬声器播放，即外放。在蓝牙或无线头戴设备时不启动。 默认true
+     * 无设置更改的地方。
+     */
     // This won't be done if bluetooth or wired headset is used
     var routeAudioToSpeakerWhenVideoIsEnabled: Boolean
         get() = config.getBool("app", "route_audio_to_speaker_when_video_enabled", true)
@@ -517,6 +521,10 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("app", "route_audio_to_speaker_when_video_enabled", value)
         }
 
+    /**
+     * 音频焦点丢失时暂停通话 默认true
+     * 设置-通话-音频焦点丢失时暂停通话 目前是开启且不能改变。
+     */
     // Automatically handled by SDK
     var pauseCallsWhenAudioFocusIsLost: Boolean
         get() = config.getBool("audio", "android_pause_calls_when_audio_focus_lost", true)
