@@ -57,7 +57,7 @@ class CorePreferences constructor(private val context: Context) {
             MasterKey.DEFAULT_MASTER_KEY_ALIAS
         ).setKeyScheme(MasterKey.KeyScheme.AES256_GCM).build()
         try {
-            //这里开始创建加密
+            // 这里开始创建加密
             EncryptedSharedPreferences.create(
                 context, encryptedSharedPreferencesFile, masterKey,
                 EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
@@ -167,24 +167,38 @@ class CorePreferences constructor(private val context: Context) {
 
     /* UI */
 
+    /**
+     * 强制竖屏，默认为false
+     */
     var forcePortrait: Boolean
         get() = config.getBool("app", "force_portrait_orientation", false)
         set(value) {
             config.setBool("app", "force_portrait_orientation", value)
         }
 
+    /**
+     * 替换SIP号码为用户名，默认为false
+     */
     var replaceSipUriByUsername: Boolean
         get() = config.getBool("app", "replace_sip_uri_by_username", false)
         set(value) {
             config.setBool("app", "replace_sip_uri_by_username", value)
         }
 
+    /**
+     * 开启动画 默认：关闭
+     * 涉及到下面导航键、通话页面的更多页面(...)
+     */
     var enableAnimations: Boolean
         get() = config.getBool("app", "enable_animations", false)
         set(value) {
             config.setBool("app", "enable_animations", value)
         }
 
+    /**
+     * 暗黑模式 默认：自动
+     * 设置-高级设置 暗黑模式
+     */
     /** -1 means auto, 0 no, 1 yes */
     var darkMode: Int
         get() {
