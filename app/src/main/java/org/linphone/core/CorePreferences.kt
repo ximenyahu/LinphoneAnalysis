@@ -395,7 +395,8 @@ class CorePreferences constructor(private val context: Context) {
     /* Call */
 
     /**
-     * 在通话之前建立媒体流
+     * 在通话之前建立媒体流 默认为false
+     * 没有位置可以设置
      */
     var sendEarlyMedia: Boolean
         get() = config.getBool("sip", "outgoing_calls_early_media", false)
@@ -413,12 +414,20 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("sip", "incoming_calls_early_media", value)
         }
 
+    /**
+     * 自动接听来电 默认为false
+     * 设置-通话-自动接听来电
+     */
     var autoAnswerEnabled: Boolean
         get() = config.getBool("app", "auto_answer", false)
         set(value) {
             config.setBool("app", "auto_answer", value)
         }
 
+    /**
+     * 自动接听时间 默认0
+     * 设置-通话-自动接听来电打开之后-自动接听时间(单位ms)
+     */
     var autoAnswerDelay: Int
         get() = config.getInt("app", "auto_answer_delay", 0)
         set(value) {
