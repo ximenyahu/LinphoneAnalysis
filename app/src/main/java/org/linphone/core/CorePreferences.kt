@@ -127,6 +127,10 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("app", "debug", value)
         }
 
+    /**
+     * 和Linphone相关内容的log信息是否输出
+     * 和应用SharedPreferences加密有关系 加密开启，则不输出log
+     */
     var logcatLogsOutput: Boolean
         get() = config.getBool("app", "print_logs_into_logcat", true)
         set(value) {
