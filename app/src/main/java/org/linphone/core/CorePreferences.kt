@@ -490,6 +490,9 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("audio", "android_disable_audio_focus_requests", value)
         }
 
+    /**
+     * 改善与蓝牙设备的交互 相关内容
+     */
     // We will try to auto enable Telecom Manager feature, but in case user disables it don't try again
     var manuallyDisabledTelecomManager: Boolean
         get() = config.getBool("app", "user_disabled_self_managed_telecom_manager", false)
@@ -497,6 +500,10 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("app", "user_disabled_self_managed_telecom_manager", value)
         }
 
+    /**
+     * 将音频转到蓝牙设备（如果有） 默认开启
+     * 设置-音频-将音频转到蓝牙设备（如果有）
+     */
     var routeAudioToBluetoothIfAvailable: Boolean
         get() = config.getBool("app", "route_audio_to_bluetooth_if_available", true)
         set(value) {
