@@ -532,6 +532,10 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("audio", "android_pause_calls_when_audio_focus_lost", value)
         }
 
+    /**
+     * 视频通话时自动开启全屏 默认true
+     * 目前没有地方设置
+     */
     var enableFullScreenWhenJoiningVideoConference: Boolean
         get() = config.getBool("app", "enter_video_conference_enable_full_screen_mode", true)
         set(value) {
@@ -540,12 +544,20 @@ class CorePreferences constructor(private val context: Context) {
 
     /* Assistant */
 
+    /**
+     * 是否是第一次启动 默认为true
+     * 在MainActivity中onCreate方法有判断，然后跳转至AssistantActivity中之后更改为false。主要是作为创建
+     * 账号的作用。
+     */
     var firstStart: Boolean
         get() = config.getBool("app", "first_start", true)
         set(value) {
             config.setBool("app", "first_start", value)
         }
 
+    /**
+     * 和AssistantActivity相关
+     */
     var xmlRpcServerUrl: String?
         get() = config.getString("assistant", "xmlrpc_url", null)
         set(value) {
