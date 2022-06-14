@@ -31,6 +31,10 @@ import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.compatibility.Compatibility
 import org.linphone.core.tools.Log
 
+/**
+ * 是一个存储APP属性设置的类，相当于SharedPreferences的加密存储。
+ * 加密使用的是 androidx.security:security-crypto-ktx 这个lib库
+ */
 class CorePreferences constructor(private val context: Context) {
     private var _config: Config? = null
     var config: Config
@@ -53,6 +57,7 @@ class CorePreferences constructor(private val context: Context) {
             MasterKey.DEFAULT_MASTER_KEY_ALIAS
         ).setKeyScheme(MasterKey.KeyScheme.AES256_GCM).build()
         try {
+            //这里开始创建加密
             EncryptedSharedPreferences.create(
                 context, encryptedSharedPreferencesFile, masterKey,
                 EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
@@ -64,6 +69,10 @@ class CorePreferences constructor(private val context: Context) {
         }
     }
 
+    /**
+     * VFS属性怀疑是涉及加密相关的属性。
+     * VFS开启会关闭linphone logs的输出
+     */
     var vfsEnabled: Boolean
         get() = encryptedSharedPreferences?.getBoolean("vfs_enabled", false) ?: false
         set(value) {
