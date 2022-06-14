@@ -210,6 +210,10 @@ class CorePreferences constructor(private val context: Context) {
         }
 
     /** Allow to make screenshots of encrypted chat rooms, disables fragment's secure mode */
+    /**
+     * 关闭安全模式 默认false
+     * 设置-高级设置-禁用UI的安全模式(允许对敏感视图进行屏幕截屏/录制)
+     */
     var disableSecureMode: Boolean
         get() = config.getBool("app", "disable_fragment_secure_mode", false)
         set(value) {
@@ -220,18 +224,31 @@ class CorePreferences constructor(private val context: Context) {
 
     /* Video */
 
+    /**
+     * 视频预览 默认不开启
+     * 只有平板设备有 设置-视频-在拨号器上显示摄像头预览(在启用视频下面)
+     */
     var videoPreview: Boolean
         get() = config.getBool("app", "video_preview", false)
         set(value) = config.setBool("app", "video_preview", value)
 
     /* Chat */
 
+    /**
+     * 一条信息最多包含一个文件 默认false(这里怀疑是阻止)
+     * 目前没有地方设置
+     */
     var preventMoreThanOneFilePerMessage: Boolean
         get() = config.getBool("app", "prevent_more_than_one_file_per_message", false)
         set(value) {
             config.setBool("app", "prevent_more_than_one_file_per_message", value)
         }
 
+    /**
+     * 撤消通知后标记为已读 默认false
+     * 设置-聊天 撤消通知后标记为已读
+     * "[Notifications Manager] Chat room will be marked as read when notification will be dismissed")
+     */
     var markAsReadUponChatMessageNotificationDismissal: Boolean
         get() = config.getBool("app", "mark_as_read_notif_dismissal", false)
         set(value) {
