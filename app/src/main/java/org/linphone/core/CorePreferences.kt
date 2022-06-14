@@ -333,10 +333,20 @@ class CorePreferences constructor(private val context: Context) {
         get() = config.getInt("app", "voice_recording_max_duration", 600000) // in ms
         set(value) = config.setInt("app", "voice_recording_max_duration", value)
 
+    /**
+     * 按下录音 默认false
+     * 没有地方设置
+     * 用在聊天时语音功能：按下录制 抬起停止
+     */
     var holdToRecordVoiceMessage: Boolean
         get() = config.getBool("app", "voice_recording_hold_and_release_mode", false)
         set(value) = config.setBool("app", "voice_recording_hold_and_release_mode", value)
 
+    /**
+     * 录音完成后立即发送 默认false
+     * 没有地方设置
+     * 聊天时语音功能：按下录制 停止录制时立即发送
+     */
     var sendVoiceRecordingRightAway: Boolean
         get() = config.getBool("app", "voice_recording_send_right_away", false)
         set(value) = config.setBool("app", "voice_recording_send_right_away", value)
