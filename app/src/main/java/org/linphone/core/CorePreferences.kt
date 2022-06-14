@@ -382,6 +382,10 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("app", "display_contact_organization", value)
         }
 
+    /**
+     * 在启动器中创建联系人的快捷方式 默认false
+     * 设置-联系人-在启动器中创建联系人的快捷方式 visibility=gone
+     */
     var contactsShortcuts: Boolean
         get() = config.getBool("app", "contact_shortcuts", false)
         set(value) {
@@ -390,12 +394,19 @@ class CorePreferences constructor(private val context: Context) {
 
     /* Call */
 
+    /**
+     * 在通话之前建立媒体流
+     */
     var sendEarlyMedia: Boolean
         get() = config.getBool("sip", "outgoing_calls_early_media", false)
         set(value) {
             config.setBool("sip", "outgoing_calls_early_media", value)
         }
 
+    /**
+     * 在通话之前建立媒体流 默认false
+     * 设置-通话-在通话之前建立媒体流
+     */
     var acceptEarlyMedia: Boolean
         get() = config.getBool("sip", "incoming_calls_early_media", false)
         set(value) {
