@@ -93,11 +93,18 @@ class CorePreferences constructor(private val context: Context) {
             // logcatLogsOutput = false
         }
 
+    /**
+     * 聊天室静音：主要是通知方面
+     * 这里可以指定聊天室的id
+     */
     fun chatRoomMuted(id: String): Boolean {
         val sharedPreferences: SharedPreferences = coreContext.context.getSharedPreferences("notifications", Context.MODE_PRIVATE)
         return sharedPreferences.getBoolean(id, false)
     }
 
+    /**
+     * 聊天室静音：主要是通知方面
+     */
     fun muteChatRoom(id: String, mute: Boolean) {
         val sharedPreferences: SharedPreferences = coreContext.context.getSharedPreferences("notifications", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -107,6 +114,13 @@ class CorePreferences constructor(private val context: Context) {
 
     /* App settings */
 
+    /**
+     * 默认为true
+     * debugLogs开启，会使loggingService的log水平为LogLevel.Message
+     * 以下代码在LinphoneApplication类中发现
+     * Factory.instance().loggingService.setLogLevel(LogLevel.Message)
+     * debugLogs开启，会在设置-高级设置中显示“发送日志”、“重启日志” 两个选项。
+     */
     var debugLogs: Boolean
         get() = config.getBool("app", "debug", org.linphone.BuildConfig.DEBUG)
         set(value) {
