@@ -587,18 +587,30 @@ class CorePreferences constructor(private val context: Context) {
             config.setString("app", "voice_mail", value)
         }
 
+    /**
+     * 将拒绝的呼叫重定向到语音邮件 URI 默认开启
+     * 设置-通话-将拒绝的呼叫重定向到语音邮件 URI 默认不可更改
+     */
     var redirectDeclinedCallToVoiceMail: Boolean
         get() = config.getBool("app", "redirect_declined_call_to_voice_mail", true)
         set(value) {
             config.setBool("app", "redirect_declined_call_to_voice_mail", value)
         }
 
+    /**
+     * 存储时间戳 默认0
+     * 和DialerFragment 有关系
+     */
     var lastUpdateAvailableCheckTimestamp: Int
         get() = config.getInt("app", "version_check_url_last_timestamp", 0)
         set(value) {
             config.setInt("app", "version_check_url_last_timestamp", value)
         }
 
+    /**
+     * 默认用户头像地址 默认为null
+     * 在侧边栏和联系人有关系
+     */
     var defaultAccountAvatarPath: String?
         get() = config.getString("app", "default_avatar_path", null)
         set(value) {
