@@ -137,18 +137,28 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("app", "print_logs_into_logcat", value)
         }
 
+    /**
+     * 设置-高级设置 在启动时开始
+     */
     var autoStart: Boolean
         get() = config.getBool("app", "auto_start", true)
         set(value) {
             config.setBool("app", "auto_start", value)
         }
 
+    /**
+     * 设置-高级设置 后台模式(显示通知以使应用程序保持活动状态)
+     */
     var keepServiceAlive: Boolean
         get() = config.getBool("app", "keep_service_alive", false)
         set(value) {
             config.setBool("app", "keep_service_alive", value)
         }
 
+    /**
+     * 已读且同意相关条款和策略
+     * 助手-我接受Belledonne Communications的使用条款和隐私策略
+     */
     var readAndAgreeTermsAndPrivacy: Boolean
         get() = config.getBool("app", "read_and_agree_terms_and_privacy", false)
         set(value) {
