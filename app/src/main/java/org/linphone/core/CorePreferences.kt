@@ -276,12 +276,20 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("app", "use_in_app_file_viewer_for_non_encrypted_files", value)
         }
 
+    /**
+     * 在通知中隐藏短信内容 默认false
+     * 设置-聊天 在通知中隐藏短信内容
+     */
     var hideChatMessageContentInNotification: Boolean
         get() = config.getBool("app", "hide_chat_message_content_in_notification", false)
         set(value) {
             config.setBool("app", "hide_chat_message_content_in_notification", value)
         }
 
+    /**
+     * 隐藏空的聊天室 默认true
+     * 设置-聊天-隐藏空的聊天室
+     */
     var hideEmptyRooms: Boolean
         get() = config.getBool("misc", "hide_empty_chat_rooms", true)
         set(value) {
