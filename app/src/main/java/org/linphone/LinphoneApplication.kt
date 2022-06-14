@@ -34,6 +34,9 @@ import org.linphone.core.*
 import org.linphone.core.tools.Log
 import org.linphone.mediastream.Version
 
+/**
+ * 图片矿建是用的是 Coil。它的介绍地址是：https://coil-kt.github.io/coil/README-zh/
+ */
 class LinphoneApplication : Application(), ImageLoaderFactory {
     companion object {
         @SuppressLint("StaticFieldLeak")
@@ -96,6 +99,7 @@ class LinphoneApplication : Application(), ImageLoaderFactory {
 
     override fun onCreate() {
         super.onCreate()
+        //app_name 默认是Linphone
         val appName = getString(R.string.app_name)
         android.util.Log.i("[$appName]", "Application is being created")
         createConfig(applicationContext)
