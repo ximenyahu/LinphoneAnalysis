@@ -621,26 +621,46 @@ class CorePreferences constructor(private val context: Context) {
 
     /* UI related */
 
+    /**
+     * 显示联络人组织 默认为true 不可更改
+     */
     val contactOrganizationVisible: Boolean
         get() = config.getBool("app", "display_contact_organization", true)
 
+    // 暗黑模式 允许
     private val darkModeAllowed: Boolean
         get() = config.getBool("app", "dark_mode_allowed", true)
 
     /* Feature related */
 
+    /**
+     * 初步分析是通话界面的截屏按钮 后续跟进
+     */
     val showScreenshotButton: Boolean
         get() = config.getBool("app", "show_take_screenshot_button_in_call", false)
 
+    /**
+     * 震动相关 后续跟进
+     */
     val dtmfKeypadVibration: Boolean
         get() = config.getBool("app", "dtmf_keypad_vibraton", false)
 
+    /**
+     * 允许一个消息里有不同文件和文本 和preventMoreThanOneFilePerMessage或许有联系
+     * 后续跟进
+     */
     val allowMultipleFilesAndTextInSameMessage: Boolean
         get() = config.getBool("app", "allow_multiple_files_and_text_in_same_message", true)
 
+    /**
+     * 从默认地址获取联系人 默认true
+     */
     val fetchContactsFromDefaultDirectory: Boolean
         get() = config.getBool("app", "fetch_contacts_from_default_directory", true)
 
+    /**
+     * 延迟加载的时间 200ms
+     */
     val delayBeforeShowingContactsSearchSpinner: Int
         get() = config.getInt("app", "delay_before_showing_contacts_search_spinner", 200)
 
@@ -652,22 +672,38 @@ class CorePreferences constructor(private val context: Context) {
     val hideStaticImageCamera: Boolean
         get() = config.getBool("app", "hide_static_image_camera", true)
 
+    /**
+     * 关闭聊天功能 默认false 即不关闭
+     */
     // Will disable chat feature completely
     val disableChat: Boolean
         get() = config.getBool("app", "disable_chat_feature", false)
 
+    /**
+     * 初步分析阻止UI显示，比如来电 后续跟进
+     */
     // This will prevent UI from showing up, except for the launcher & the foreground service notification
     val preventInterfaceFromShowingUp: Boolean
         get() = config.getBool("app", "keep_app_invisible", false)
 
+    /**
+     * 默认情况下使用MKV格式来录制语音信息使用Opus来编码，如果关闭，将会使用WAV格式来替代同时文件会变得很大。
+     */
     // By default we will record voice messages using MKV format and Opus audio encoding
     // If disabled, WAV format will be used instead. Warning: files will be heavier!
     val voiceMessagesFormatMkv: Boolean
         get() = config.getBool("app", "record_voice_messages_in_mkv_format", true)
 
+    /**
+     * 目前不知道是什么作用
+     */
     val useEphemeralPerDeviceMode: Boolean
         get() = config.getBool("app", "ephemeral_chat_messages_settings_per_device", true)
 
+    /**
+     * 显示可选择的铃声 设置为false则不显示
+     * 当前为一个 使用手机铃声的switch选择
+     */
     // If enabled user will see all ringtones bundled in our SDK
     // and will be able to choose which one to use if not using it's device's default
     val showAllRingtones: Boolean
