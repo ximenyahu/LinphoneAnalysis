@@ -435,6 +435,10 @@ class CorePreferences constructor(private val context: Context) {
         }
 
     // Show overlay inside of application
+    /**
+     * 重叠来电通知 默认true
+     * 设置-通话-重叠来电通知
+     */
     var showCallOverlay: Boolean
         get() = config.getBool("app", "call_overlay", true)
         set(value) {
@@ -442,6 +446,10 @@ class CorePreferences constructor(private val context: Context) {
         }
 
     // Show overlay even when app is in background, requires permission
+    /**
+     * 在应用程序外显示叠加层 默认false
+     * 设置-通话-重叠来电通知打开后可开启 需要跳转系统设置开启 允许显示在其他应用的上层
+     */
     var systemWideCallOverlay: Boolean
         get() = config.getBool("app", "system_wide_call_overlay", false)
         set(value) {
