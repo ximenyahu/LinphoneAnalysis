@@ -566,6 +566,9 @@ class CorePreferences constructor(private val context: Context) {
 
     /* Dialog related */
 
+    /**
+     * 聊天情况下 Dialog弹出相关
+     */
     var limeSecurityPopupEnabled: Boolean
         get() = config.getBool("app", "lime_security_popup_enabled", true)
         set(value) {
@@ -574,6 +577,10 @@ class CorePreferences constructor(private val context: Context) {
 
     /* Other */
 
+    /**
+     * 语音留言URI 默认为空
+     * 设置-通话-语音留言URI
+     */
     var voiceMailUri: String?
         get() = config.getString("app", "voice_mail", null)
         set(value) {
