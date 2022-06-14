@@ -296,12 +296,20 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("misc", "hide_empty_chat_rooms", value)
         }
 
+    /**
+     * 从已删除的代理配置中隐藏聊天室 (目前不知道是什么作用) 默认true
+     * 设置-聊天-从已删除的代理配置中隐藏聊天室
+     */
     var hideRoomsFromRemovedProxies: Boolean
         get() = config.getBool("misc", "hide_chat_rooms_from_removed_proxies", true)
         set(value) {
             config.setBool("misc", "hide_chat_rooms_from_removed_proxies", value)
         }
 
+    /**
+     * 设备名称 当前防爆手机名称为：SW96
+     * 设置-高级设置-设备名称(动画下面)
+     */
     var deviceName: String
         get() = config.getString("app", "device_name", Compatibility.getDeviceName(context))!!
         set(value) = config.setString("app", "device_name", value)
