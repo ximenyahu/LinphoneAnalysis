@@ -456,18 +456,31 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("app", "system_wide_call_overlay", value)
         }
 
+    /**
+     * 立即开始通话 默认false
+     * 设置-通话-立即开始通话 “如果从其他应用程序开始，则通话将自动开始” 目前还不了解该功能。
+     */
     var callRightAway: Boolean
         get() = config.getBool("app", "call_right_away", false)
         set(value) {
             config.setBool("app", "call_right_away", value)
         }
 
+    /**
+     * 自动开始通话录音 默认false
+     * 设置-通话-自动开始通话录音
+     */
     var automaticallyStartCallRecording: Boolean
         get() = config.getBool("app", "auto_start_call_record", false)
         set(value) {
             config.setBool("app", "auto_start_call_record", value)
         }
 
+    /**
+     * 改善与蓝牙设备的交互 默认false
+     * 设置-通话-改善与蓝牙设备的交互
+     * 之前发现有bug TelecomHelper.kt isIncomingCallPermitted方法返回true解决
+     */
     var useTelecomManager: Boolean
         // Some permissions are required, so keep it to false so user has to manually enable it and give permissions
         get() = config.getBool("app", "use_self_managed_telecom_manager", false)
