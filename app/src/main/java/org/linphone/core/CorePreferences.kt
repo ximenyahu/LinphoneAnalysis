@@ -255,6 +255,10 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("app", "mark_as_read_notif_dismissal", value)
         }
 
+    /**
+     * 公开下载的媒体 默认true
+     * 设置-聊天 公开下载的媒体
+     */
     var makePublicMediaFilesDownloaded: Boolean
         // Keep old name for backward compatibility
         get() = config.getBool("app", "make_downloaded_images_public_in_gallery", true)
@@ -262,6 +266,10 @@ class CorePreferences constructor(private val context: Context) {
             config.setBool("app", "make_downloaded_images_public_in_gallery", value)
         }
 
+    /**
+     * 始终在此应用内打开文件 默认false
+     * 设置-聊天-始终在此应用内打开文件
+     */
     var useInAppFileViewerForNonEncryptedFiles: Boolean
         get() = config.getBool("app", "use_in_app_file_viewer_for_non_encrypted_files", false)
         set(value) {
