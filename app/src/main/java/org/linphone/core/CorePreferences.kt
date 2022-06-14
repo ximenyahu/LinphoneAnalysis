@@ -353,18 +353,29 @@ class CorePreferences constructor(private val context: Context) {
 
     /* Contacts */
 
+    /**
+     * 本机联系人中的状态信息(目前了解不多) 默认false
+     */
     var storePresenceInNativeContact: Boolean
         get() = config.getBool("app", "store_presence_in_native_contact", false)
         set(value) {
             config.setBool("app", "store_presence_in_native_contact", value)
         }
 
+    /**
+     * 总是问在哪个帐户中保存新创建的联系人 默认为true
+     * 设置-联系人-总是问在哪个帐户中保存新创建的联系人
+     */
     var showNewContactAccountDialog: Boolean
         get() = config.getBool("app", "show_new_contact_account_dialog", true)
         set(value) {
             config.setBool("app", "show_new_contact_account_dialog", value)
         }
 
+    /**
+     * 显示联络人组织 默认 contactOrganizationVisible (true)
+     * 设置-联系人-显示联络人组织
+     */
     var displayOrganization: Boolean
         get() = config.getBool("app", "display_contact_organization", contactOrganizationVisible)
         set(value) {
