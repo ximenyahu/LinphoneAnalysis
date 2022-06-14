@@ -711,25 +711,47 @@ class CorePreferences constructor(private val context: Context) {
 
     /* Default values related */
 
+    /**
+     * 回声消除校准
+     */
     val echoCancellerCalibration: Int
         get() = config.getInt("sound", "ec_delay", -1)
 
+    /**
+     * 默认域
+     */
     val defaultDomain: String
         get() = config.getString("app", "default_domain", "sip.linphone.org")!!
 
+    /**
+     * 默认 defaultRlsUri
+     */
     val defaultRlsUri: String
         get() = config.getString("sip", "rls_uri", "sips:rls@sip.linphone.org")!!
 
+    /**
+     * 默认 defaultLimeServerUrl
+     */
     val defaultLimeServerUrl: String
         get() = config.getString("lime", "lime_server_url", "https://lime.linphone.org/lime-server/lime-server.php")!!
 
+    /**
+     * 在拨号盘输入 #1234# 可以 调用debug工具 包括：排错、禁用日志、发送日志、查看配置文件、取消 等功能。
+     */
     val debugPopupCode: String
         get() = config.getString("app", "debug_popup_magic", "#1234#")!!
 
+    /**
+     * 初步分析是超过6个参与者在会议中，强制激活扬声器布局
+     * 后续跟进
+     */
     // If there is more participants than this value in a conference, force ActiveSpeaker layout
     val maxConferenceParticipantsForMosaicLayout: Int
         get() = config.getInt("app", "conference_mosaic_layout_max_participants", 6)
 
+    /**
+     * conferenceServerUri
+     */
     val conferenceServerUri: String
         get() = config.getString(
             "app",
@@ -737,6 +759,9 @@ class CorePreferences constructor(private val context: Context) {
             "sip:conference-factory@sip.linphone.org"
         )!!
 
+    /**
+     * audioVideoConferenceServerUri
+     */
     val audioVideoConferenceServerUri: String
         get() = config.getString(
             "app",
@@ -744,78 +769,147 @@ class CorePreferences constructor(private val context: Context) {
             "sip:videoconference-factory2@sip.linphone.org"
         )!!
 
+    /**
+     * 检查更新新版本频率 86400000ms是一天的意思
+     */
     val checkUpdateAvailableInterval: Int
         get() = config.getInt("app", "version_check_interval", 86400000)
 
     /* Assistant */
 
+    /**
+     * 助手-创建账户
+     */
     val showCreateAccount: Boolean
         get() = config.getBool("app", "assistant_create_account", true)
 
+    /**
+     * 助手-使用LINPHONE账户
+     */
     val showLinphoneLogin: Boolean
         get() = config.getBool("app", "assistant_linphone_login", true)
 
+    /**
+     * 助手-使用SIP账户
+     */
     val showGenericLogin: Boolean
         get() = config.getBool("app", "assistant_generic_login", true)
 
+    /**
+     * 助手-获取远程配置
+     */
     val showRemoteProvisioning: Boolean
         get() = config.getBool("app", "assistant_remote_provisioning", true)
 
     /* Side Menu */
 
+    /**
+     * 侧边栏 账号信息
+     */
     val showAccountsInSideMenu: Boolean
         get() = config.getBool("app", "side_menu_accounts", true)
 
+    /**
+     * 侧边栏 助手
+     */
     val showAssistantInSideMenu: Boolean
         get() = config.getBool("app", "side_menu_assistant", true)
 
+    /**
+     * 侧边栏 设置
+     */
     val showSettingsInSideMenu: Boolean
         get() = config.getBool("app", "side_menu_settings", true)
 
+    /**
+     * 侧边栏-录音
+     */
     val showRecordingsInSideMenu: Boolean
         get() = config.getBool("app", "side_menu_recordings", true)
 
+    /**
+     * 在侧边菜单中显示预定会议 实际判断条件还有LinphoneUtils.isRemoteConferencingAvailable()
+     */
     val showScheduledConferencesInSideMenu: Boolean
         get() = config.getBool("app", "side_menu_conferences", true)
 
+    /**
+     * 侧边栏-关于
+     */
     val showAboutInSideMenu: Boolean
         get() = config.getBool("app", "side_menu_about", true)
 
+    /**
+     * 侧边栏-退出
+     */
     val showQuitInSideMenu: Boolean
         get() = config.getBool("app", "side_menu_quit", true)
 
     /* Settings */
 
+    /**
+     * 尚不清楚
+     */
     val allowDtlsTransport: Boolean
         get() = config.getBool("app", "allow_dtls_transport", false)
 
+    /**
+     * 设置-账号信息
+     */
     val showAccountSettings: Boolean
         get() = config.getBool("app", "settings_accounts", true)
 
+    /**
+     * 尚不清楚
+     */
     val showTunnelSettings: Boolean
         get() = config.getBool("app", "settings_tunnel", true)
 
+    /**
+     * 设置-音频设置
+     */
     val showAudioSettings: Boolean
         get() = config.getBool("app", "settings_audio", true)
 
+    /**
+     * 设置-视频设置
+     */
     val showVideoSettings: Boolean
         get() = config.getBool("app", "settings_video", true)
 
+    /**
+     * 设置-通话设置
+     */
     val showCallSettings: Boolean
         get() = config.getBool("app", "settings_call", true)
 
+    /**
+     * 设置-聊天设置
+     */
     val showChatSettings: Boolean
         get() = config.getBool("app", "settings_chat", true)
 
+    /**
+     * 设置-网络设置
+     */
     val showNetworkSettings: Boolean
         get() = config.getBool("app", "settings_network", true)
 
+    /**
+     * 设置-联系人设置
+     */
     val showContactsSettings: Boolean
         get() = config.getBool("app", "settings_contacts", true)
 
+    /**
+     * 设置-高级设置
+     */
     val showAdvancedSettings: Boolean
         get() = config.getBool("app", "settings_advanced", true)
 
+    /**
+     * 设置-Meeting设置
+     */
     val showConferencesSettings: Boolean
         get() = config.getBool("app", "settings_conferences", true)
 
