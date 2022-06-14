@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="conferenceViewModel"
+            type="org.linphone.activities.voip.viewmodels.ConferenceViewModel" />
+
+        <variable
+            name="controlsViewModel"
+            type="org.linphone.activities.voip.viewmodels.ControlsViewModel" />
+
+        <variable
+            name="inflatedVisibility"
+            type="Integer" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@{controlsViewModel.fullScreenMode || controlsViewModel.pipMode ? @dimen/voip_remote_margin_full_screen : @dimen/voip_remote_margin, default=@dimen/voip_remote_margin}"
+        android:visibility="@{inflatedVisibility}"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/voip_conference_header"
+            android:visibility="@{controlsViewModel.fullScreenMode || controlsViewModel.pipMode ? View.GONE : View.VISIBLE}"
+            app:conferenceViewModel="@{conferenceViewModel}" />
+
+        <include
+            android:id="@+id/remote_recording"
+            layout="@layout/voip_remote_recording"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{conferenceViewModel.isRemotelyRecorded ? View.VISIBLE : View.GONE, default=gone}" />
+
+        <org.linphone.activities.voip.views.GridBoxLayout
+            centerContent="@{true}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:onClick="@{() -> controlsViewModel.toggleFullScreen()}"
+            app:entries="@{conferenceViewModel.conferenceParticipantDevices}"
+            app:layout="@{@layout/voip_conference_participant_remote_grid}" />
+
+    </LinearLayout>
+
+</layout>
