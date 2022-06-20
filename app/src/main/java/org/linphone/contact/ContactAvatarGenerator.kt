@@ -107,6 +107,7 @@ class ContactAvatarGenerator(private val context: Context) {
     private fun getPainter(): Paint {
         val painter = Paint()
         painter.isAntiAlias = true
+        //这里是头像通话记录、联系人前面图标的填充颜色
         painter.color = backgroundColor
         return painter
     }
