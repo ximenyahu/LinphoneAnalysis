@@ -40,6 +40,7 @@ class TabsViewModel : ViewModel() {
     val historyMissedCountTranslateY = MutableLiveData<Float>()
     val chatUnreadCountTranslateY = MutableLiveData<Float>()
 
+    // 具体动画
     private val bounceAnimator: ValueAnimator by lazy {
         ValueAnimator.ofFloat(AppUtils.getDimension(R.dimen.tabs_fragment_unread_count_bounce_offset), 0f).apply {
             addUpdateListener {
@@ -97,6 +98,7 @@ class TabsViewModel : ViewModel() {
         updateUnreadChatCount()
         updateMissedCallCount()
 
+        // ViewModel中和动画相关的控制目前发现这一处
         if (corePreferences.enableAnimations) bounceAnimator.start()
     }
 
